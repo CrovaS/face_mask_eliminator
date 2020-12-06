@@ -1,3 +1,3 @@
 from generative_inpainting import train
 
-train.main()
+exec(open("generative_inpainting/train.py").read())
