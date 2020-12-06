@@ -57,4 +57,5 @@ if __name__=="__main__":
         for j in range(size[1]):
             if(mask_result[i,j]==1):
                 pixels[j,i]=(255,255,255)
+    pic.save("../original.png")
     mask_image.save("../mask.png")
