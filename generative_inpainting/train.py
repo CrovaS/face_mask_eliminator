@@ -4,7 +4,7 @@ import glob
 import tensorflow as tf
 import neuralgym as ng
 
-from inpaint_model import InpaintCAModel
+from generative_inpainting.inpaint_model import InpaintCAModel
 
 
 def multigpu_graph_def(model, FLAGS, data, gpu_id=0, loss_type='g'):
