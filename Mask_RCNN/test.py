@@ -12,15 +12,19 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import skimage
 import glob
-from mrcnn import utils
-from mrcnn import visualize
-from mrcnn.visualize import display_images
-import mrcnn.model as modellib
-from mrcnn.model i,port log
+from Mask_RCNN.mrcnn import utils
+from Mask_RCNN.mrcnn import visualize
+from Mask_RCNN.mrcnn.visualize import display_images
+import Mask_RCNN.mrcnn.model as modellib
+from Mask_RCNNmrcnn.model i,port log
 from PIL import Image
-import facial_mask
+import Mask_RCNN.facial_mask
 
 if __name__=="__main__":
+
+    print("Where is your face mask image?")
+    img_path=input()
+
     custom_WEIGHTS_PATH="Facial_mask_best.h5"
     config=facial_mask.Facial_maskConfig()
     class InferenceConfig(config.__class__):
@@ -38,7 +42,7 @@ if __name__=="__main__":
         model=modellib.MaskRCNN(mode="inference",model_dir=logs,config=config)
 
     model.load_weights(custom_WEIGHTS_PATH,by_name=True)
-    pic=Image.open("/?")
+    pic=Image.open(img_path)
     if pic.getdata().mode=="RGBA":
         pic=pic.convert("RGB")
     image=numpy.array(pic.getdata()).reshape(pic.size[0],pic.size[1],3)
@@ -53,4 +57,4 @@ if __name__=="__main__":
         for j in range(size[1]):
             if(mask_result[i,j]==1):
                 pixels[j,i]=(255,255,255)
-    mask_image.save("output.png")
+    mask_image.save("../mask.png")
