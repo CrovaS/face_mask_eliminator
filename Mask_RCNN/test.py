@@ -24,8 +24,8 @@ if __name__=="__main__":
 
     print("Where is your face mask image?")
     img_path=input()
-
-    custom_WEIGHTS_PATH="Facial_mask_best.h5"
+    img_path="../"+img_path
+    custom_WEIGHTS_PATH="logs/Facial_mask_best.h5"
     config=Mask_RCNN.facial_mask.Facial_maskConfig()
     class InferenceConfig(config.__class__):
         GPU_COUNT=1
