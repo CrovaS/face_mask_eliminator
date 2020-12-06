@@ -51,7 +51,7 @@ data_flist:
   ]
   me: [
     'dataset/train_shuffled.flist',
-    'datset/validation_shuffled.flist',
+    'dataset/validation_shuffled.flist',
   ]
 
 static_view_size: 4

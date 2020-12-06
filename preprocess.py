@@ -38,7 +38,7 @@ print(100,"%")
 
 folder_path="generative_inpainting/dataset"
 train_filename="generative_inpainting/dataset/train_shuffled.flist"
-validation_filename="generative_inpainting/dataset/validation_shuffeld.flist"
+validation_filename="generative_inpainting/dataset/validation_shuffled.flist"
 is_shuffled=1
 # get the list of directories
 ##dirs = os.listdir(args.folder_path)
@@ -50,13 +50,13 @@ validation_file_names = []
 
 # print all directory names
 i=0
-for dir_item in dirs_name_list:
+for dir_item2 in dirs_name_list:
     # modify to full path -> directory
         
-    dir_item = folder_path + "/" + dir_item
+    dir_item = folder_path + "/" + dir_item2
     folder = os.listdir(dir_item)
     for item in folder:
-        item = dir_item + "/" + item
+        item = dir_item2 + "/" + item
         if i==0:
             training_file_names.append(item)
         else :
