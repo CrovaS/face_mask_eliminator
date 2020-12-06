@@ -16,7 +16,7 @@ from Mask_RCNN.mrcnn import utils
 from Mask_RCNN.mrcnn import visualize
 from Mask_RCNN.mrcnn.visualize import display_images
 import Mask_RCNN.mrcnn.model as modellib
-from Mask_RCNNmrcnn.model i,port log
+from Mask_RCNN.mrcnn.model import log
 from PIL import Image
 import Mask_RCNN.facial_mask
 
@@ -26,7 +26,7 @@ if __name__=="__main__":
     img_path=input()
 
     custom_WEIGHTS_PATH="Facial_mask_best.h5"
-    config=facial_mask.Facial_maskConfig()
+    config=Mask_RCNN.facial_mask.Facial_maskConfig()
     class InferenceConfig(config.__class__):
         GPU_COUNT=1
         IMAGES_PER_GPU=1
@@ -34,23 +34,19 @@ if __name__=="__main__":
     config.display()
     DEVIDE="/gpu:0"
     TEST_MODE="inference"
-    def get_as(rows=1,cols=1,size=16):
-        _,ax=plt.subplots(rosw,cols,figsize=(size*cols,size*rows))
-        return ax
-
     with tf.device(DEVICE):
-        model=modellib.MaskRCNN(mode="inference",model_dir=logs,config=config)
+        model=modellib.MaskRCNN(mode="inference",model_dir="logs",config=config)
 
     model.load_weights(custom_WEIGHTS_PATH,by_name=True)
     pic=Image.open(img_path)
     if pic.getdata().mode=="RGBA":
         pic=pic.convert("RGB")
-    image=numpy.array(pic.getdata()).reshape(pic.size[0],pic.size[1],3)
+    image=np.array(pic.getdata()).reshape(pic.size[0],pic.size[1],3)
     np.transpose(image,(1,0,2))
     results=model.detect([image],verbose=1)
-    ax=get_ax(1)
     r=results[0]
     mask_result=r['masks']
+    size=(256,256,)
     mask_image=Image.new("RGB",size)
     pixels=mask_image.load()
     for i in range(size[0]):

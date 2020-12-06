@@ -5,7 +5,7 @@ import numpy as np
 import tensorflow as tf
 import neuralgym as ng
 
-from inpaint_model import InpaintCAModel
+from generative_inpainting.inpaint_model import InpaintCAModel
 
 
 parser = argparse.ArgumentParser()
