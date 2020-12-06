@@ -15,7 +15,7 @@ parser.add_argument('--mask', default='../mask.png', type=str,
                     help='The filename of mask, value 255 indicates mask.')
 parser.add_argument('--output', default='../output.png', type=str,
                     help='Where to write output.')
-parser.add_argument('--checkpoint_dir', default='logs', type=str,
+parser.add_argument('--checkpoint_dir', default='logs/full_model_celeba_hq_256', type=str,
                     help='The directory of tensorflow checkpoint.')
 
 

@@ -12,7 +12,7 @@ model_restore: pre_trained  # logs/places2_gated_conv
 dataset: 'me'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 random_crop: False  # Set to false when dataset is 'celebahq', meaning only resize the images to img_shapes, instead of crop img_shapes from a larger raw image. This is useful when you train on images with different resolutions like places2. In these cases, please set random_crop to true.
 val: True  # true if you want to view validation results in tensorboard
-log_dir: logs
+log_dir: logs/full_model_celeba_hq_256
 
 gan: 'sngan'
 gan_loss_alpha: 1
@@ -23,7 +23,7 @@ padding: 'SAME'
 
 # training
 train_spe: 20
-max_iters: 4000
+max_iters: 400
 viz_max_out: 4
 val_psteps: 4
 
