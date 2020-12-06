@@ -114,10 +114,14 @@ def random_bbox(FLAGS):
     img_width = img_shape[1]
     maxt = img_height - FLAGS.vertical_margin - FLAGS.height
     maxl = img_width - FLAGS.horizontal_margin - FLAGS.width
-    t = 138
-    l = 62
-    h = 82
-    w = 136
+    #t = 138
+    #l = 62
+    #h = 82
+    #w = 136
+    t=149
+    l=83
+    h=60
+    w=104
     return (t, l, h, w)
 
 
@@ -135,7 +139,8 @@ def bbox2mask(FLAGS, bbox, name='mask'):
         mask = np.zeros((1, height, width, 1), np.float32)
         h = np.random.randint(delta_h//2+1)
         w = np.random.randint(delta_w//2+1)
-        mask[:, 138:220,62:198 ,:] = 1.
+        #mask[:, 138:220,62:198 ,:] = 1.
+        mask[:,149:209,83:187,;]=1.
         return mask
     with tf.variable_scope(name), tf.device('/cpu:0'):
         img_shape = FLAGS.img_shapes

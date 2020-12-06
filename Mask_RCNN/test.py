@@ -32,7 +32,7 @@ if __name__=="__main__":
         IMAGES_PER_GPU=1
     config=InferenceConfig()
     config.display()
-    DEVIDE="/gpu:0"
+    DEVICE="/gpu:0"
     TEST_MODE="inference"
     with tf.device(DEVICE):
         model=modellib.MaskRCNN(mode="inference",model_dir="logs",config=config)
