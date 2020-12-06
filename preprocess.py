@@ -56,7 +56,7 @@ for dir_item2 in dirs_name_list:
     dir_item = folder_path + "/" + dir_item2
     folder = os.listdir(dir_item)
     for item in folder:
-        item = dir_item2 + "/" + item
+        item = "dataset/"+dir_item2 + "/" + item
         if i==0:
             training_file_names.append(item)
         else :
