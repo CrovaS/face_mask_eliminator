@@ -140,7 +140,7 @@ def bbox2mask(FLAGS, bbox, name='mask'):
         h = np.random.randint(delta_h//2+1)
         w = np.random.randint(delta_w//2+1)
         #mask[:, 138:220,62:198 ,:] = 1.
-        mask[:,149:209,83:187,;]=1.
+        mask[:,149:209,83:187,:]=1.
         return mask
     with tf.variable_scope(name), tf.device('/cpu:0'):
         img_shape = FLAGS.img_shapes
