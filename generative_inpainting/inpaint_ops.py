@@ -122,6 +122,10 @@ def random_bbox(FLAGS):
     l=83
     h=60
     w=104
+    #t=154
+    #l=73
+    #h=65
+    #w=112
     return (t, l, h, w)
 
 
@@ -141,6 +145,7 @@ def bbox2mask(FLAGS, bbox, name='mask'):
         w = np.random.randint(delta_w//2+1)
         #mask[:, 138:220,62:198 ,:] = 1.
         mask[:,149:209,83:187,:]=1.
+        #mask[:,154:219,73:185]=1.
         return mask
     with tf.variable_scope(name), tf.device('/cpu:0'):
         img_shape = FLAGS.img_shapes
