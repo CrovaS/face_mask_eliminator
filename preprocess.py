@@ -52,12 +52,18 @@ for image in imgs:
         resize_image=cropped_img.resize((256,256))
         resize_image.save(target_image,"PNG",quality=95)
 
-        enhancer=ImageEnhance.Color(resize_image)
+        enhancer1=ImageEnhance.Color(resize_image)
         for i in range(10):
             factor=1-0.05*i
-            aug_image=enhancer.enhance(factor)
-            aug_name=target_path+"/"+target[0]+"/"+file_img+str(i)+".png"
-            print(aug_name)
+            aug_image=enhancer1.enhance(factor)
+            aug_name=target_path+"/"+target[0]+"/"+file_img+"c"+str(i)+".png"
+            aug_image.save(aug_name,"PNG",quality=95)
+        
+        enhancer2=ImageEnhance.Brightness(resize_image)
+        for j in range(10):
+            factor=1-0.05*j
+            aug_image=enhancer2.enhance(factor)
+            aug_name=target_path+"/"+target[0]+"/"+file_img+"b"+str(j)+".png"
             aug_image.save(aug_name,"PNG",quality=95)
 
         
