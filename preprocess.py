@@ -42,10 +42,10 @@ for image in imgs:
         chin=face_landmark['chin']
         chin_len=len(chin)
         chin_bottom_point=chin[chin_len//2]
-        lower=nose_point[1]+(chin_bottom_point[1]-nose_point[1])*1.06
-        right=nose_point[0]+(chin_bottom_point[1]-nose_point[1])*1.28
-        left=nose_point[0]-(chin_bottom_point[1]-nose_point[1])*1.28
-        upper=nose_point[1]-(chin_bottom_point[1]-nose_point[1])*1.5
+        lower=nose_point[1]+(chin_bottom_point[1]-nose_point[1])
+        right=nose_point[0]+(chin_bottom_point[1]-nose_point[1])
+        left=nose_point[0]-(chin_bottom_point[1]-nose_point[1])
+        upper=nose_point[1]-(chin_bottom_point[1]-nose_point[1])
         cropped_img=img.crop((left,upper,right,lower))
         resize_image=cropped_img.resize((256,256))
         resize_image.save(target_image,"PNG",quality=95)
