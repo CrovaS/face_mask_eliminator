@@ -1,4 +1,4 @@
-from PIL import Image, ImageFile, ImageDraw, ImagePath
+from PIL import Image, ImageFile, ImageDraw, ImagePath, ImageEnhance
 import numpy as np
 import glob
 import argparse
@@ -26,12 +26,14 @@ for image in imgs:
     k=i/len(imgs)*100
     if k%10==0:
         print(k,"%")
-    folder_img, file_img = os.path.split(image)
+    s = os.path.splitext(image)
+    s= os.path.split(s[0])
+    file_img=s[1]
     source_image=image
     if (i%10<8):
-        target_image=target_path+"/"+target[0]+"/"+file_img
+        target_image=target_path+"/"+target[0]+"/"+file_img+".png"
     else :
-        target_image=target_path+"/"+target[1]+"/"+file_img
+        target_image=target_path+"/"+target[1]+"/"+file_img+".png"
     face_image_np=face_recognition.load_image_file(source_image)
     face_locations=face_recognition.face_locations(face_image_np,model="hog")
     face_landmarks=face_recognition.face_landmarks(face_image_np,face_locations)
@@ -49,6 +51,16 @@ for image in imgs:
         cropped_img=img.crop((left,upper,right,lower))
         resize_image=cropped_img.resize((256,256))
         resize_image.save(target_image,"PNG",quality=95)
+
+        enhancer=ImageEnhance.Color(resize_image)
+        for i in range(10):
+            factor=1-0.05*i
+            aug_image=enhancer.enhance(factor)
+            aug_name=target_path+"/"+target[0]+"/"+file_img+str(i)+".png"
+            print(aug_name)
+            aug_image.save(aug_name,"PNG",quality=95)
+
+        
     i+=1
 print(100,"%")
 

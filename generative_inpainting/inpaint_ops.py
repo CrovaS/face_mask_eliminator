@@ -118,10 +118,10 @@ def random_bbox(FLAGS):
     #l = 62
     #h = 82
     #w = 136
-    t=149
-    l=83
-    h=60
-    w=104
+    t=127
+    l=45
+    h=128
+    w=166
     #t=154
     #l=73
     #h=65
@@ -144,7 +144,7 @@ def bbox2mask(FLAGS, bbox, name='mask'):
         h = np.random.randint(delta_h//2+1)
         w = np.random.randint(delta_w//2+1)
         #mask[:, 138:220,62:198 ,:] = 1.
-        mask[:,149:209,83:187,:]=1.
+        mask[:,127:255,45:211,:]=1.
         #mask[:,154:219,73:185]=1.
         return mask
     with tf.variable_scope(name), tf.device('/cpu:0'):
