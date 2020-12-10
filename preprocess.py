@@ -1,8 +1,10 @@
-from PIL import Image
+from PIL import Image, ImageFile, ImageDraw, ImagePath
+import numpy as np
 import glob
 import argparse
 import os
 from random import shuffle
+import face_recognition
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--path',dest='path')
@@ -29,8 +31,21 @@ for image in imgs:
         target_image=target_path+"/"+target[0]+"/"+file_img
     else :
         target_image=target_path+"/"+target[1]+"/"+file_img
-    Img=Image.open(source_image)
-    resize_image=Img.resize((256,256))
+    face_image_np=face_recognition.load_image_files(source_image)
+    face_loacations=face_recognition.face_locations(face_image_np,model="hog")
+    face_landmarks=face_recognition.face_landmarks(face_image_np,face_locations)
+    nose_bridge=face_landmark['nose_bridge']
+    nose_point=nose_bridge[len(nose_bridge)*1//4]
+    nose_v=np.array(nose_point)
+    chin=face_landmark['chin']
+    chin_len=len(chin)
+    chin_bottom_point=chin[chin_len//2]
+    lower=1.06*chin_bottom_point[1]-0.06*nose_point[1]
+    right=nose_point[0]+(chin_bottom_point[1]-nose_point[1])*1.28
+    left=nose_point[0]-(chin_bottom_point[1]-nose_point[1])*1.28
+    upper=1.5*chin_bottom_point[1]-0.5*nose_point[1]
+    cropped_img=img.crop((left,upper,right,lower))
+    resize_image=cropped_img.resize((256,256))
     resize_image.save(target_image,"PNG",quality=95)
     i+=1
 print(100,"%")
