@@ -19,7 +19,7 @@ for folder in target:
     if not os.path.isdir(target_path+"/"+folder):
         os.mkdir(target_path+"/"+folder)
 
-imgs=glob.glob(path+"/*.jpg")
+imgs=glob.glob(path+"/*")
 i=0
 for image in imgs:
     img=Image.open(image)
