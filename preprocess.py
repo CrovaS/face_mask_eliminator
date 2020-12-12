@@ -31,9 +31,9 @@ for image in imgs:
     file_img=s[1]
     source_image=image
     if (i%10<8):
-        target_image=target_path+"/"+target[0]+"/"+file_img+".png"
+        target_image=target_path+"/"+target[0]+"/"+file_img
     else :
-        target_image=target_path+"/"+target[1]+"/"+file_img+".png"
+        target_image=target_path+"/"+target[1]+"/"+file_img
     face_image_np=face_recognition.load_image_file(source_image)
     face_locations=face_recognition.face_locations(face_image_np,model="hog")
     face_landmarks=face_recognition.face_landmarks(face_image_np,face_locations)
@@ -50,7 +50,8 @@ for image in imgs:
         upper=nose_point[1]-(chin_bottom_point[1]-nose_point[1])
         cropped_img=img.crop((left,upper,right,lower))
         resize_image=cropped_img.resize((256,256))
-        resize_image.save(target_image,"PNG",quality=95)
+        target_image_origin=target_image+".png"
+        resize_image.save(target_image_origin,"PNG",quality=95)
 
         enhancer1=ImageEnhance.Color(resize_image)
         for k in range(10):
