@@ -1,17 +1,8 @@
-All the processes are highly recommended to be in Colab Environment
-
-1. Setup
-
-git clone https://github.com/hmc0105/face_mask_eliminator
-pip install tensorflow==1.1.15
-pip install keras==2.2.5
-pip install -q PyDrive
-pip install -r requirments.txt
-python setup.py install
-!pip install git+https://github.com/JiahuiYu/neuralgym
-
 # Face Mask Eliminator
 CS470 Final Project : Face Mask Eliminator
+<img class="fit-picture"
+     src="https://github.com/hmc0105/face_mask_eliminator/blob/master/mode.png"
+     >
 
 ## [ About ]
 <a href="https://drive.google.com/file/d/1BhTdI1iVxx1nCMz4IHTGdTHiwT73w_tq/view?usp=sharing">Project Paper</a>
