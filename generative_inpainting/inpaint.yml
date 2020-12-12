@@ -23,7 +23,7 @@ padding: 'SAME'
 
 # training
 train_spe: 20
-max_iters: 400
+max_iters: 600
 viz_max_out: 4
 val_psteps: 4
 
