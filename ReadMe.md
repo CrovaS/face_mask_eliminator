@@ -23,13 +23,13 @@ Specified training methods for model to be personalized will be explained on the
 
 
 ## [ SETUP ]
-pip install keras==2.2.5
-pip install tensorflow==1.1.15
-pip install -q PyDrive
-pip install -r requirements.txt
-python setup.py install
-pip install git+https://github.com/JiahuiYu/neuralgym
-pip install face_recognition
+pip install keras==2.2.5<br>
+pip install tensorflow==1.1.15<br>
+pip install -q PyDrive<br>
+pip install -r requirements.txt<br>
+python setup.py install<br>
+pip install git+https://github.com/JiahuiYu/neuralgym<br>
+pip install face_recognition<br>
 
 ## [ Execution ]
 Before the start, download the below things
