@@ -22,8 +22,8 @@ random_seed: False
 padding: 'SAME'
 
 # training
-train_spe: 40
-max_iters: 800
+train_spe: 20
+max_iters: 400
 viz_max_out: 4
 val_psteps: 4
 
