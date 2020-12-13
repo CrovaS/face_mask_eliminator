@@ -58,6 +58,16 @@ Before the start, download the below things
 
 4. python test.py : In here, your image with the face mask should be 256*256 size
 
+## [Execution on HYUNMIN's Inpainting Fine Tuning]
+* Mask RCNN : Save the file onto Mask_RCNN/logs
+<a href="https://drive.google.com/file/d/1DZ1YmEiW39JBs3bn-KlUvZ1dhlOzdKEd/view?usp=sharing">https://drive.google.com/file/d/1DZ1YmEiW39JBs3bn-KlUvZ1dhlOzdKEd/view?usp=sharing</a>
+* Inpainting : Save the file onto generative_inpainting/logs/full
+* Mask RCNN : Save the file onto Mask_RCNN/logs
+<a href="https://drive.google.com/drive/folders/14W0YMeBsTiZtLvVGMab6l999DqD57Z4D?usp=sharing">https://drive.google.com/drive/folders/14W0YMeBsTiZtLvVGMab6l999DqD57Z4D?usp=sharing</a>
+
+1. conda activate tensorflow
+
+2. python test.py : Image with the face mask should be 256*256, Or just use datset/hyunmin_test
 
 
 ## [OS X Execution Error in Encoding Solution]
@@ -79,7 +89,7 @@ https://drive.google.com/file/d/1XIqZwpaYSw4SHCkCVYkaGpiYfl8htmxH/view?usp=shari
 cd Mask_RCNN<br>
 python facial_mask.py train --datset=dataset/ --weights=coco<br>
 
-# [Mask R-CNN Data Making : Mask Polygon]
+## [Mask R-CNN Data Making : Mask Polygon]
 You can just use the dataset link, but also you can make the dataset using tools/mask_polygon.py<br>
 https://drive.google.com/file/d/1lAM0BUPxGBjT5jIbBM4YzIeEeVeYrrjU/view?usp=sharing<br>
 
