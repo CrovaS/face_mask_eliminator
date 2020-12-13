@@ -84,8 +84,8 @@ cd tools/<br>
 python resize_256.py --path your_foldr<br>
 python mask_polygon.py<br>
 <br>
-cd ../Mask_RCNN<br>
-python facial_mask.py<br>
+cd ../<br>
+python train_mask_rcnn.py train --dataset=dataset/ --weights=coco <br>
 
 
 ## [ Library ]

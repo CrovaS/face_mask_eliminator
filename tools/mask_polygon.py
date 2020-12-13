@@ -53,7 +53,7 @@ def create_mask(image_path, path, i):
     if i==5:
       mask_path="dataset/mask_image/kf94.png"
     if i==6:
-      mask_path="dataset/mask_imagebluemaskc0.png"
+      mask_path="dataset/mask_image/bluemaskc0.png"
     if i==7:
       mask_path="dataset/mask_image/default-mask.png"
     show = False
