@@ -1,13 +1,11 @@
 from PIL import Image
 import glob
 import os
-#path="/content/drive/MyDrive/project/Dataset/img_align_celeba/img_align_celeba"
 path="/content/sy"
 target="/content/val"
 if os.path.isdir(target):
   os.rmdir(target)
 os.mkdir(target)
-#%cd "/content/drive/MyDrive/project/Dataset/img_align_celeba/img_align_celeba"
 %cd "/content/sy"
 imgs=glob.glob("*.jpg")
 i=0

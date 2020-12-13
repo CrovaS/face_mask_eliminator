@@ -39,19 +39,19 @@ def cli():
 def create_mask(image_path, path, i):
     pic_path = image_path
     if i==1:
-      mask_path=root+"Dataset/bluemask.png"
+      mask_path="dataset/mask_image/blue-mask-2.png"
     if i==2:
-      mask_path=root+"Dataset/dental.png"
+      mask_path="dataset/mask_image/dentala0.png"
     if i==3:
-      mask_path=root+"Dataset/bluemaskc1.png"
+      mask_path="dataset/mask_image/bluemask.png"
     if i==4:
-      mask_path=root+"Dataset/kf94.png"
+      mask_path="dataset/mask_image/kf94.png"
     if i==5:
-      mask_path=root+"Dataset/kf94c0.png"
+      mask_path="dataset/mask_image/kf94.png"
     if i==6:
-      mask_path=root+"Dataset/blue-mask-2.png"
+      mask_path="dataset/mask_imagebluemaskc0.png"
     if i==7:
-      mask_path=root+"Dataset/default-mask.png"
+      mask_path="dataset/mask_image/default-mask.png"
     show = False
     model = "hog"
     return FaceMasker(pic_path, mask_path, path,show, model).mask()
@@ -222,7 +222,7 @@ class FaceMasker:
 
     def _save(self):
         path_splits = os.path.split(self.face_path)
-        new_face_path = root+'Dataset/' + self.path + path_splits[1]
+        new_face_path =  self.path + path_splits[1]
         self._face_img.save(new_face_path)
         print(f'Save to {new_face_path}')
 
@@ -237,21 +237,15 @@ class FaceMasker:
         return int(distance)
 
 if __name__ == '__main__':
-    images = glob.glob('dataset/celeba/*')
+    images = glob.glob('dataset/resize_dataset/*')
     print(len(images))
     if (os.path.isdir('facial_mask/train')):
-    os.rmdir('facial_mask/train')
+        os.rmdir('facial_mask/train')
     if (os.path.isdir('facial_mask/val')):
-    os.rmdir('facial_mask/val')
+        os.rmdir('facial_mask/val')
+    #os.mkdir('facial_mask')
     os.mkdir('facial_mask/train')
     os.mkdir('facial_mask/val')
-    IMAGE_DIR = os.path.join('dataset','mask_image')
-    DEFAULT_IMAGE_PATH = os.path.join(IMAGE_DIR, 'kf94.png')
-    BLACK_IMAGE_PATH = os.path.join(IMAGE_DIR, 'black-mask.png')
-    BLUE_IMAGE_PATH = os.path.join(IMAGE_DIR, 'bluemask.png')
-    RED_IMAGE_PATH = os.path.join(IMAGE_DIR, 'red-mask.png')
-    FIGURE_1=os.path.join(IMAGE_DIR, 'blue-mask-2.png')
-    FIGURE_2=os.path.join(IMAGE_DIR, 'default-mask.png')    
     train_dict=dict()
     val_dict=dict()
     i=0

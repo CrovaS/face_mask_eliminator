@@ -79,6 +79,17 @@ https://drive.google.com/file/d/1XIqZwpaYSw4SHCkCVYkaGpiYfl8htmxH/view?usp=shari
 cd Mask_RCNN<br>
 python facial_mask.py train --datset=dataset/ --weights=coco<br>
 
+# [Mask R-CNN Data Making : Mask Polygon]
+You can just use the dataset link, but also you can make the dataset using tools/mask_polygon.py<br>
+https://drive.google.com/file/d/1lAM0BUPxGBjT5jIbBM4YzIeEeVeYrrjU/view?usp=sharing<br>
+
+1. downloads and unzip
+
+2. place the folder tools/dataset/resize_dataset
+
+3. python tools/mask_polygon.py
+
+4. If you want to use it for training, move the result forder into Mask_RCNN/dataset
 
 ## [ Library ]
 - [Generative Image Inpainting](https://github.com/JiahuiYu/generative_inpainting)
