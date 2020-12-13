@@ -12,6 +12,7 @@ path=parser.parse_args().path
 target_path="generative_inpainting/dataset"
 target=["train", "val"]
 
+## Image Augmentation
 if not os.path.isdir(target_path):
     os.mkdir(target_path)
 
@@ -71,7 +72,7 @@ for image in imgs:
     i+=1
 print(100,"%")
 
-
+## flist file
 folder_path="generative_inpainting/dataset"
 train_filename="generative_inpainting/dataset/train_shuffled.flist"
 validation_filename="generative_inpainting/dataset/validation_shuffled.flist"

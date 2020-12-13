@@ -7,7 +7,7 @@ CS470 Final Project : Face Mask Eliminator
 ## [ About ]
 <a href="https://drive.google.com/file/d/1BhTdI1iVxx1nCMz4IHTGdTHiwT73w_tq/view?usp=sharing">Project Paper</a>
 
-Highly recommended to work on Colab environment
+
 <a href="https://colab.research.google.com/drive/1w7Md6DVNH9izUUBWfn-_L5OWoL8KrnXj?usp=sharing">Colab</a>
 <a href="https://www.youtube.com/watch?v=X4KrHy1tkTY&t=2s">Colab Guide Video</a>
 
@@ -50,13 +50,13 @@ Before the start, download the below things
 <a href="https://drive.google.com/drive/folders/1jDDjRJPHR1MS20fujUF6hW_2Z3upQQhz?usp=sharing">https://drive.google.com/drive/folders/1jDDjRJPHR1MS20fujUF6hW_2Z3upQQhz?usp=sharing</a>
 
 * Use your front-looking faces 20~25 figure, or You can use dataset folder
+1. conda activate tensorflow
 
-1. python preprocess.py --path folder_your_face
+2. python preprocess.py --path folder_your_face
 
-2. python train.py
+3. python train.py
 
-3. python test.py : In here, your image with the face mask should be 256*256 size
-
+4. python test.py : In here, your image with the face mask should be 256*256 size
 
 
 
@@ -66,6 +66,19 @@ Before the start, download the below things
 <img class="encoding_error"
      src="https://github.com/hmc0105/face_mask_eliminator/blob/master/encoding_error.png"
      >
+
+
+## [MASK R-CNN Training]
+
+* Unzip the file and put into Mask_RCNN/dataset <br>
+https://drive.google.com/file/d/1XIqZwpaYSw4SHCkCVYkaGpiYfl8htmxH/view?usp=sharing
+
+<br>
+<br>
+
+cd Mask_RCNN
+python facial_mask.py train --datset=dataset/ -weights=coco
+
 
 ## [ Library ]
 - [Generative Image Inpainting](https://github.com/JiahuiYu/generative_inpainting)
