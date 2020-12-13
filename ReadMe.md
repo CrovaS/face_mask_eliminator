@@ -18,7 +18,7 @@ It consists of the semantic segmentation model and the inpainting model to recov
 Specified training methods for model to be personalized will be explained on the paper.
 
 ## [ Develop Environment ]
-- Tensorflow 1.1.15
+- Tensorflow 1.15.0
 - Keras 2.2.5
 
 

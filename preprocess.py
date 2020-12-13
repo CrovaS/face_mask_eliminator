@@ -67,10 +67,9 @@ for image in imgs:
             aug_image=enhancer2.enhance(factor)
             aug_name=target_image+"b"+str(j)+".png"
             aug_image.save(aug_name,"PNG",quality=95)
-
-        
     i+=1
 print(100,"%")
+
 
 ## flist file
 folder_path="generative_inpainting/dataset"
