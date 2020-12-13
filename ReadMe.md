@@ -56,7 +56,7 @@ Before the start, download the below things
 
 3. python test.py
 
-* OS X Error in Encoding 
+## [OS X Execution Error in Encoding Solution]
 "/Users/User_name/opt/anaconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/saving.py"
 
 <img class="encoding_error"
