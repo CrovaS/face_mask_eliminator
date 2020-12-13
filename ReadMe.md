@@ -23,13 +23,20 @@ Specified training methods for model to be personalized will be explained on the
 
 
 ## [ SETUP ]
+Tested in MacBook Pro 2019 13', Colab<br>
+<br>
 pip install keras==2.2.5<br>
-pip install tensorflow==1.1.15<br>
+pip install tensorflow==1.15.0<br>
 pip install -q PyDrive<br>
 pip install -r requirements.txt<br>
-python setup.py install<br>
 pip install git+https://github.com/JiahuiYu/neuralgym<br>
 pip install face_recognition<br>
+cd Mask_RCNN<br>
+python setup.py install<br>
+cd ../<br>
+
+<br>
+<a href="https://beausty23.tistory.com/59">Tensorflow 1.15.0 Install Guideline</a>
 
 ## [ Execution ]
 Before the start, download the below things
@@ -49,6 +56,12 @@ Before the start, download the below things
 
 3. python test.py
 
+* OS X Error in Encoding 
+"/Users/User_name/opt/anaconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/saving.py"
+
+<img class="encoding_error"
+     src="https://github.com/hmc0105/face_mask_eliminator/blob/master/encoding_error.png"
+     >
 
 ## [ Library ]
 - [Generative Image Inpainting](https://github.com/JiahuiYu/generative_inpainting)
