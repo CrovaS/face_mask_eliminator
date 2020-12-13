@@ -61,8 +61,7 @@ Before the start, download the below things
 ## [Execution on HYUNMIN's Inpainting Fine Tuning]
 * Mask RCNN : Save the file onto Mask_RCNN/logs
 <a href="https://drive.google.com/file/d/1DZ1YmEiW39JBs3bn-KlUvZ1dhlOzdKEd/view?usp=sharing">https://drive.google.com/file/d/1DZ1YmEiW39JBs3bn-KlUvZ1dhlOzdKEd/view?usp=sharing</a>
-* Inpainting : Save the file onto generative_inpainting/logs/full
-* Mask RCNN : Save the file onto Mask_RCNN/logs
+* Inpainting : Save the file onto generative_inpainting/logs/full_model_celeba_hq_256
 <a href="https://drive.google.com/drive/folders/14W0YMeBsTiZtLvVGMab6l999DqD57Z4D?usp=sharing">https://drive.google.com/drive/folders/14W0YMeBsTiZtLvVGMab6l999DqD57Z4D?usp=sharing</a>
 
 1. conda activate tensorflow
