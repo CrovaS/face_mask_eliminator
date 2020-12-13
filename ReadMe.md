@@ -77,7 +77,7 @@ https://drive.google.com/file/d/1XIqZwpaYSw4SHCkCVYkaGpiYfl8htmxH/view?usp=shari
 <br>
 
 cd Mask_RCNN<br>
-python facial_mask.py train --datset=dataset/ -weights=coco<br>
+python facial_mask.py train --datset=dataset/ --weights=coco<br>
 
 
 ## [ Library ]
