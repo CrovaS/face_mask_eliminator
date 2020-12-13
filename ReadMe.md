@@ -76,29 +76,17 @@ Before the start, download the below things
      src="https://github.com/hmc0105/face_mask_eliminator/blob/master/encoding_error.png"
      >
 
-
-## [MASK R-CNN Training]
-
-* Unzip the file and put into Mask_RCNN/dataset <br>
-https://drive.google.com/file/d/1XIqZwpaYSw4SHCkCVYkaGpiYfl8htmxH/view?usp=sharing
-
-<br>
-<br>
-
-cd Mask_RCNN<br>
-python facial_mask.py train --datset=dataset/ --weights=coco<br>
-
-## [Mask R-CNN Data Making : Mask Polygon]
-You can just use the dataset link, but also you can make the dataset using tools/mask_polygon.py<br>
+## [MASK R-CNN Training & Execution]
+Dataset Download : <br>
 https://drive.google.com/file/d/1lAM0BUPxGBjT5jIbBM4YzIeEeVeYrrjU/view?usp=sharing<br>
 
-1. downloads and unzip
+cd tools/
+python resize_256.py --path your_foldr
+python mask_polygon.py
 
-2. place the folder tools/dataset/resize_dataset
+cd ../Mask_RCNN
+python facial_mask.py
 
-3. python tools/mask_polygon.py
-
-4. If you want to use it for training, move the result forder into Mask_RCNN/dataset
 
 ## [ Library ]
 - [Generative Image Inpainting](https://github.com/JiahuiYu/generative_inpainting)
