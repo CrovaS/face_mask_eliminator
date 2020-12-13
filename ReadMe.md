@@ -80,12 +80,12 @@ Before the start, download the below things
 Dataset Download : <br>
 https://drive.google.com/file/d/1lAM0BUPxGBjT5jIbBM4YzIeEeVeYrrjU/view?usp=sharing<br>
 
-cd tools/
-python resize_256.py --path your_foldr
-python mask_polygon.py
-
-cd ../Mask_RCNN
-python facial_mask.py
+cd tools/<br>
+python resize_256.py --path your_foldr<br>
+python mask_polygon.py<br>
+<br>
+cd ../Mask_RCNN<br>
+python facial_mask.py<br>
 
 
 ## [ Library ]
