@@ -76,7 +76,7 @@ Before the start, download the below things
      src="https://github.com/hmc0105/face_mask_eliminator/blob/master/encoding_error.png"
      >
 
-## [MASK R-CNN Training & Execution]
+## [MASK R-CNN Training]
 Dataset Download : <br>
 https://drive.google.com/file/d/1lAM0BUPxGBjT5jIbBM4YzIeEeVeYrrjU/view?usp=sharing<br>
 
@@ -93,6 +93,4 @@ python facial_mask.py<br>
 - [Mask R-CNN](https://github.com/matterport/Mask_RCNN)
 - [face_recognition](https://github.com/ageitgey/face_recognition)
 
-## [ Fine-Tuned Inpainting Model for HYUNMIN CHO]
-Place it onto generative_inpainting/logs/full_model_celeba_hq_256 <br>
 
