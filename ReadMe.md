@@ -95,3 +95,7 @@ https://drive.google.com/file/d/1lAM0BUPxGBjT5jIbBM4YzIeEeVeYrrjU/view?usp=shari
 - [Generative Image Inpainting](https://github.com/JiahuiYu/generative_inpainting)
 - [Mask R-CNN](https://github.com/matterport/Mask_RCNN)
 - [face_recognition](https://github.com/ageitgey/face_recognition)
+
+## [ Fine-Tuned Inpainting Model for HYUNMIN CHO]
+Place it onto generative_inpainting/logs/full_model_celeba_hq_256 <br>
+
