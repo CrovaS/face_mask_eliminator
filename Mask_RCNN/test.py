@@ -21,7 +21,6 @@ from PIL import Image
 import Mask_RCNN.facial_mask
 
 if __name__=="__main__":
-
     print("Where is your face mask image?")
     img_path=input()
     img_path="../"+img_path

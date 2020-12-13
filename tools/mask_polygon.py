@@ -9,6 +9,7 @@ import math
 import json
 import json
 
+# Argument Process
 def cli():
     parser = argparse.ArgumentParser(description='Wear a face mask in the given picture.')
     parser.add_argument('pic_path', help='Picture path.')
@@ -36,8 +37,11 @@ def cli():
 
     FaceMasker(pic_path, mask_path, args.show, args.model).mask()
 
+#create mask on FaceMasker
 def create_mask(image_path, path, i):
     pic_path = image_path
+    
+    #Select the mask following i
     if i==1:
       mask_path="dataset/mask_image/blue-mask-2.png"
     if i==2:
@@ -56,12 +60,14 @@ def create_mask(image_path, path, i):
     model = "hog"
     return FaceMasker(pic_path, mask_path, path,show, model).mask()
 
+#Calculate the pixels after rotation
 def rot_pix(x,y,x_mid,y_mid,a):
     a=a*math.pi/180
     xr=(x-x_mid)*math.cos(a)-(y-y_mid)*math.sin(a)+x_mid
     yr=(x-x_mid)*math.sin(a)+(y-y_mid)*math.cos(a)+y_mid
     return xr,yr
 
+#Create Mask
 class FaceMasker:
     KEY_FACIAL_FEATURES = ('nose_bridge', 'chin')
 
@@ -74,6 +80,7 @@ class FaceMasker:
         self._mask_img: ImageFile = None
         self.path=path
 
+    #get face landmark, Wear the mask on self._mask_face(face_landmark)
     def mask(self):
         import face_recognition
 
@@ -110,6 +117,7 @@ class FaceMasker:
         else:
           return 0
     
+    #picture modification to wear the face mask
     def _mask_face(self, face_landmark: dict):
         nose_bridge = face_landmark['nose_bridge']
         nose_point = nose_bridge[len(nose_bridge) * 1 // 4]
@@ -128,7 +136,7 @@ class FaceMasker:
         width_ratio = 1.2
         new_height = int(np.linalg.norm(nose_v - chin_bottom_v)*1.1)
 
-        #MASK Polygon Rate
+        #Polygon Edge ratio on mask image
         left_high_h=3.5/12.38
         left_high_w=1.69/19.85
         left_low_h=11.72/12.38
@@ -141,7 +149,7 @@ class FaceMasker:
         middle_w=1/2
         middle_h=0.01
 
-        # left
+        # left side of the face mask size modification
         mask_left_img = self._mask_img.crop((0, 0, width // 2, height))
         mask_left_width = self.get_distance_from_point_to_line(chin_left_point, nose_point, chin_bottom_point)
         mask_left_width = int(mask_left_width * width_ratio)
@@ -151,7 +159,7 @@ class FaceMasker:
         left_low=(mask_left_width*left_low_w,new_height*left_low_h)
 
 
-        # right
+        # right side of the face mask size modification
         mask_right_img = self._mask_img.crop((width // 2, 0, width, height))
         mask_right_width = self.get_distance_from_point_to_line(chin_right_point, nose_point, chin_bottom_point)
         mask_right_width = int(mask_right_width * width_ratio)
@@ -160,7 +168,7 @@ class FaceMasker:
         right_high=(mask_right_width*right_high_w+mask_left_img.width,new_height*right_high_h)
         right_low=(mask_right_width*right_low_w+mask_left_img.width,new_height*right_low_h)
 
-        # merge mask
+        # merge left side and right side mask
         size = (mask_left_img.width + mask_right_img.width, new_height)
         mask_img = Image.new('RGBA', size)
         mask_img.paste(mask_left_img, (0, 0), mask_left_img)
@@ -191,6 +199,8 @@ class FaceMasker:
 
         # add mask
         self._face_img.paste(mask_img, (box_x, box_y), mask_img)
+        
+        # if the pixels exceed 256, then set the value to 255 pixel value
         if (middle_low[1]+box_y)>255:
           middle_low_y=255
         else :
@@ -204,6 +214,8 @@ class FaceMasker:
           left_low_y=255
         else:
           left_low_y=left_low[1]+box_y
+          
+        #Mask Edge Pixels
         middle_high=((int)(middle_high[0]+box_x),(int)(middle_high[1]+box_y))
         middle_low=((int)(middle_low[0]+box_x),(int)(middle_low_y))
         right_high=((int)(right_high[0]+box_x),(int)(right_high[1]+box_y))
@@ -212,20 +224,22 @@ class FaceMasker:
         left_low=((int)(box_x+left_low[0]),(int)(left_low_y))
         a=[left_high,middle_high,right_high,right_low,middle_low,left_low]
 
-        
-        poly=Image.new('RGBA',self._face_img.size)
-        pdraw=ImageDraw.Draw(poly)
-        pdraw.polygon(a,fill ="blue", outline ="blue")
+        ### If you want to check the face mask polygon, delete #
+        #poly=Image.new('RGBA',self._face_img.size)
+        #pdraw=ImageDraw.Draw(poly)
+        #pdraw.polygon(a,fill ="blue", outline ="blue")
         #self._face_img.paste(poly,mask=poly)
         k=(left_high,middle_high,right_high,right_low,middle_low,left_low)
         return k
 
+    #save the results
     def _save(self):
         path_splits = os.path.split(self.face_path)
         new_face_path =  self.path + path_splits[1]
         self._face_img.save(new_face_path)
         print(f'Save to {new_face_path}')
 
+    
     @staticmethod
     def get_distance_from_point_to_line(point, line_point1, line_point2):
         distance = np.abs((line_point2[1] - line_point1[1]) * point[0] +
@@ -239,22 +253,23 @@ class FaceMasker:
 if __name__ == '__main__':
     images = glob.glob('dataset/resize_dataset/*')
     print(len(images))
-    if (os.path.isdir('facial_mask/train')):
-        os.rmdir('facial_mask/train')
-    if (os.path.isdir('facial_mask/val')):
-        os.rmdir('facial_mask/val')
-    #os.mkdir('facial_mask')
-    os.mkdir('facial_mask/train')
-    os.mkdir('facial_mask/val')
+    if not (os.path.isdir('../Mask_RCNN/dataset')):
+        os.mkdir('../Mask_RCNN/dataset')
+    if not (os.path.isdir('../Mask_RCNN/dataset/train')):
+        os.mkdir('../Mask_RCNN/dataset/train')
+    if not (os.path.isdir('../Mask_RCNN/dataset/val')):
+        os.mkdir('../Mask_RCNN/dataset/val')
     train_dict=dict()
     val_dict=dict()
+    
+    
     i=0
+    # For each image, make dataset using create_mask function
     for fname in images:
       if i%2000<1800:
-        element="facial_mask/train/"
+        element="../Mask_RCNN/dataset/train/"
       else:
-        element="facial_mask/val/"
-    
+        element="../Mask_RCNN/dataset/val/"
       if i<1500:
         k=create_mask(fname,element,1)
       if i>=1500 and i<3000:
@@ -269,27 +284,19 @@ if __name__ == '__main__':
         k=create_mask(fname,element,6)
       if i>=9000 and i<10000:
         k=create_mask(fname,element,7)
+        
       if k:
         lh,mh,rh,rl,ml,ll=k
         path_splits = os.path.split(fname)
         xarr=[]
-        xarr.append(lh[0])
-        xarr.append(mh[0])
-        xarr.append(rh[0])
-        xarr.append(rl[0])
-        xarr.append(ml[0])
-        xarr.append(ll[0])
         yarr=[]
-        yarr.append(lh[1])
-        yarr.append(mh[1])
-        yarr.append(rh[1])
-        yarr.append(rl[1])
-        yarr.append(ml[1])
-        yarr.append(ll[1])
-
+        for item in k:
+            xarr.append(item[0])
+            yarr.append(item[1])
+            
+        #Process for JSON File
         if os.path.isfile(element + path_splits[1]):
           filename = path_splits[1]
-          # processing json
           image = dict()
           image["fileref"]=""
           image["size"] = 6
@@ -307,13 +314,16 @@ if __name__ == '__main__':
           regions["0"]=zero
           image["regions"]=regions
           path_splits = os.path.split(fname)
+          
+          #90% training, 10% validation
           if (i%2000<1800):
             train_dict[path_splits[1]]=image
           else :
             val_dict[path_splits[1]]=image
-            print("I'm on")
       i+=1
-    with open('facial_mask/train/via_region_data.json','w') as outfile:
+      
+    #After all, save the JSON File
+    with open('../Mask_RCNN/dataset/train/via_region_data.json','w') as outfile:
         json.dump(train_dict,outfile)
-    with open('facial_mask/val/via_region_data.json','w') as outfile:
+    with open('../Mask_RCNN/dataset/val/via_region_data.json','w') as outfile:
         json.dump(val_dict,outfile)
