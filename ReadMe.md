@@ -23,7 +23,8 @@ Specified training methods for model to be personalized will be explained on the
 
 
 ## [ SETUP ]
-Tested in MacBook Pro 2019 13', Colab<br>
+Tested in MacBook Pro 2019 13'<br>
+Tested in Colab<br>
 <br>
 pip install keras==2.2.5<br>
 pip install tensorflow==1.15.0<br>
@@ -48,13 +49,16 @@ Before the start, download the below things
 * DeepFill v2 : Save the file onto generative_inpainting/pre_trained
 <a href="https://drive.google.com/drive/folders/1jDDjRJPHR1MS20fujUF6hW_2Z3upQQhz?usp=sharing">https://drive.google.com/drive/folders/1jDDjRJPHR1MS20fujUF6hW_2Z3upQQhz?usp=sharing</a>
 
-* Upload your front-looking faces 20~25 figure
+* Use your front-looking faces 20~25 figure, or You can use dataset folder
 
 1. python preprocess.py --path folder_your_face
 
 2. python train.py
 
-3. python test.py
+3. python test.py : In here, your image with the face mask should be 256*256 size
+
+
+
 
 ## [OS X Execution Error in Encoding Solution]
 "/Users/User_name/opt/anaconda3/envs/tensorflow/lib/python3.7/site-packages/keras/engine/saving.py"
